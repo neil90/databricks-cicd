@@ -40,4 +40,6 @@ jobs:
 
       - run:
           name: Copy Notebooks to "Prod"
-          command: databricks workspace import_dir ./git-notebooks /git-notebooks
+          command: |
+            . venv/bin/activate
+            databricks workspace import_dir ./git-notebooks /git-notebooks
