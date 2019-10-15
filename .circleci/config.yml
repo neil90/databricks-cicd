@@ -40,4 +40,4 @@ jobs:
 
       - run:
           name: Copy Notebooks to "Prod"
-          command: ls -l
+          command: databricks workspace import_dir ./git-notebooks /git-notebooks
