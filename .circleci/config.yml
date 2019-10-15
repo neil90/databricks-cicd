@@ -37,3 +37,7 @@ jobs:
             echo "username=viren.patel@databricks.com" >> ~/.databrickscfg
             echo "token=$PROD_DATABRICKS_TOKEN" >> ~/.databrickscfg
             cat ~/.databrickscfg
+
+      - run:
+          name: Copy Notebooks to "Prod"
+          command: ./deploy-scripts/notebook-deploy.sh
