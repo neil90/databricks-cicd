@@ -9,7 +9,31 @@ jobs:
 
     steps:
       - checkout
-      
+
       - run:
-          name: TEST
-          command: echo "HELLO"
+          name: install dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install databricks-cli
+
+      - run:
+          name: Set DATABRICKS_SHARD
+          command: echo "export PROD_DATABRICKS_SHARD=${PROD_DATABRICKS_SHARD}" >> $BASH_ENV      
+
+      - run:
+          name: Set PROD_DATABRICKS_TOKEN
+          command: echo "export PROD_DATABRICKS_TOKEN=${PROD_DATABRICKS_TOKEN}" >> $BASH_ENV
+
+      - run:
+          name: Set BASE_NOTEBOOK_FOLDER
+          command: echo "export BASE_NOTEBOOK_FOLDER=/git-notebooks" >> $BASH_ENV
+
+      - run:
+          name: Set .databrickscfg
+          command: |
+            echo "[DEFAULT]" >> ~/.databrickscfg
+            echo "host=$PROD_DATABRICKS_SHARD" >> ~/.databrickscfg
+            echo "username=viren.patel@databricks.com" >> ~/.databrickscfg
+            echo "token=$PROD_DATABRICKS_TOKEN" >> ~/.databrickscfg
+            cat ~/.databrickscfg
