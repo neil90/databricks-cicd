@@ -29,6 +29,6 @@ for job_json in job_jsons:
 
                 print("Updating Job " + job["settings"]["name"])
                 api_client.post("/jobs/reset", json_params=job_exists)
-    if job_exists == False :
-        print("Creating Job " + job_data["name"])
-        api_client.post("/jobs/create", json_params=job_data)
+        else:
+            print("Creating Job " + job_data["name"])
+            api_client.post("/jobs/create", json_params=job_data)
