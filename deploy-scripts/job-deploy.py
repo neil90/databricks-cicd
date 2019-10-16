@@ -23,17 +23,23 @@ for job_json in job_jsons:
     with open(job_json) as json_file:
         job_data = json.load(json_file)
 
+    print("Working Job Json " + job_json)
+
     if jobs:
+        jobs_exists = False
         for job in jobs:
-            jobs_exists = False
             if job["settings"]["name"] == job_data["name"]:
-                job_exists = {"job_id": job["job_id"]}
+                jobs_exists = {"job_id": job["job_id"]}
+                jobs_exists["new_settings"] = job_data
 
-                if job_exists:
-                    job_exists["new_settings"] = job_data
+                print("Updating Job " + job["settings"]["name"])
+                api_client.post("/jobs/reset", json_params=jobs_exists)
 
-                    print("Updating Job " + job["settings"]["name"])
-                    api_client.post("/jobs/reset", json_params=job_exists)
+        if jobs_exists is False:
+            print("Creating Job " + job_data["name"])
+            api_client.post("/jobs/create", json_params=job_data)
+    # Odd case if no jobs are created yet
     else:
         print("Creating Job " + job_data["name"])
         api_client.post("/jobs/create", json_params=job_data)
+
