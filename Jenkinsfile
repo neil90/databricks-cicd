@@ -24,7 +24,17 @@ pipeline {
                     sh 'echo "username=viren.patel@databricks.com" >> ~/.databrickscfg'
                     sh 'echo "token=$PROD_DATABRICKS_TOKEN" >> ~/.databrickscfg'
                     sh 'cat ~/.databrickscfg'
-            }
+                }
+                 stage('Copy Notebooks to Prod') {
+                 steps {
+                    sh 'databricks workspace rm -r /git-notebooks/'
+                    sh 'databricks workspace import_dir -o ./git-notebooks /git-notebooks'
+                }
+                 stage('Databricks Job Create/Update') {
+                 steps {
+                    sh 'cd ./deploy-script'
+                    sh 'python job-deploy.py'
+                }                
         }
     }
 }
