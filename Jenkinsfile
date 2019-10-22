@@ -10,9 +10,9 @@ pipeline {
 
         }
          stages {
-                 stage('One Echo') {
+                 stage('Install Depedancies') {
                  steps {
-                     echo 'Hi, this is Neil'
+                     sh 'pip install databricks-cli'
                     }
                  }
 
