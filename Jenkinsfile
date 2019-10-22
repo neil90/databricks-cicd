@@ -6,7 +6,8 @@ pipeline {
             }
         }
         environment {
-            NEIL_SECRET = credentials('neil_secret')
+            PROD_DATABRICKS_SHARD = credentials('PROD_DATABRICKS_SHARD')
+            PROD_DATABRICKS_TOKEN = credentials('PROD_DATABRICKS_TOKEN')
 
         }
          stages {
@@ -16,10 +17,12 @@ pipeline {
                     }
                  }
 
-                 stage('Two ls') {
+                 stage('Set .databrickscfg') {
                  steps {
                     sh 'echo "[DEFAULT]" >> ~/.databrickscfg'
-                    sh 'echo "$NEIL_SECRET" >> ~/.databrickscfg'
+                    sh 'echo "host=$PROD_DATABRICKS_SHARD" >> ~/.databrickscfg'
+                    sh 'echo "username=viren.patel@databricks.com" >> ~/.databrickscfg'
+                    sh 'echo "token=$PROD_DATABRICKS_TOKEN" >> ~/.databrickscfg'
                     sh 'cat ~/.databrickscfg'
             }
         }
