@@ -9,7 +9,7 @@ token = os.environ['PROD_DATABRICKS_TOKEN']
 # Get jobs from prod
 api_client = DatabricksRestClient(token=token, url=shard)
 
-jobs_all = api_client.get("/jobs/list")#["jobs"]
+jobs_all = api_client.get("/jobs/list")  # ["jobs"]
 
 if len(jobs_all) == 0:
     jobs = None
