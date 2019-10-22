@@ -18,8 +18,8 @@ pipeline {
 
                  stage('Two ls') {
                  steps {
-                    sh "[DEFAULT] >> ~/.databrickscfg"
-                    sh 'echo $NEIL_SECRET >> ~/.databrickscfg'
+                    sh 'echo "[DEFAULT]" >> ~/.databrickscfg'
+                    sh 'echo "$NEIL_SECRET" >> ~/.databrickscfg'
                     sh 'cat ~/.databrickscfg'
             }
         }
