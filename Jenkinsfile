@@ -35,6 +35,7 @@ pipeline {
                  stage('Databricks Job Create/Update') {
                  steps {
                     sh 'cd ./deploy-scripts'
+                    sh 'ls -l'
                     sh 'python job-deploy.py'
                     }             
                  }
