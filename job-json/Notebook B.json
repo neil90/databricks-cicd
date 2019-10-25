@@ -1,0 +1,67 @@
+{
+   "max_retries":1,
+   "email_notifications":{
+      "no_alert_for_skipped_runs":true,
+      "on_success":[
+         "viren.patel@databricks.com"
+      ],
+      "on_failure":[
+         "viren.patel@databricks.com"
+      ],
+      "on_start":[
+         "viren.patel@databricks.com"
+      ]
+   },
+   "min_retry_interval_millis":30000,
+   "retry_on_timeout":true,
+   "name":"Notebook B",
+   "timeout_seconds":600,
+   "schedule":{
+      "timezone_id":"GMT",
+      "quartz_cron_expression":"0 0 0 * * ?"
+   },
+   "max_concurrent_runs":1,
+   "new_cluster":{
+      "instance_pool_id":"1025-174644-bear2-pool-BeGBwBfA",
+      "custom_tags":{
+         "CostCenter":"GroupA"
+      },
+      "cluster_log_conf":{
+         "s3":{
+            "destination":"s3://dbc-ae07f79c-e24f-databricks-cluster-logs/prod",
+            "canned_acl":"bucket-owner-full-control",
+            "enable_encryption":true,
+            "region":"us-west-2"
+         }
+      },
+      "autoscale":{
+         "max_workers":8,
+         "min_workers":2
+      },
+      "init_scripts":[
+         {
+            "s3":{
+               "destination":"s3://dbc-ae07f79c-e24f-random-bucket/init-scripts/postgressql-install.sh",
+               "region":""
+            }
+         }
+      ],
+      "spark_env_vars":{
+         "SPARK_NICENESS":"0"
+      },
+      "aws_attributes":{
+         "instance_profile_arn":"arn:aws:iam::938110268838:instance-profile/ProdS3DataBaseInstance-Databricks"
+      },
+      "spark_version":"6.1.x-scala2.11",
+      "spark_conf":{
+         "spark.speculation":"true"
+      }
+   },
+   "notebook_task":{
+      "notebook_path":"/git-notebooks/Notebook B",
+      "base_parameters":{
+         "param1":"value1",
+         "param2":"value2"
+      }
+   }
+}
