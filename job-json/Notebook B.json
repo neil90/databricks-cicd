@@ -16,6 +16,7 @@
    "retry_on_timeout":true,
    "name":"Notebook B",
    "timeout_seconds":600,
+   "libraries": [{"whl": "s3://foobar.artifacts/modules/python/sampleproject/sampleproject-1.4.0-py2.py3-none-any.whl"}],
    "schedule":{
       "timezone_id":"GMT",
       "quartz_cron_expression":"0 0 0 * * ?"
