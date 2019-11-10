@@ -3,8 +3,8 @@ import glob
 import json
 from _databricksrestclient import DatabricksRestClient
 
-shard = os.environ['PROD_DATABRICKS_SHARD']
-token = os.environ['PROD_DATABRICKS_TOKEN']
+shard = os.environ["PROD_DATABRICKS_SHARD"]
+token = os.environ["PROD_DATABRICKS_TOKEN"]
 
 # Get jobs from prod
 api_client = DatabricksRestClient(token=token, url=shard)
