@@ -5,4 +5,5 @@
 # COMMAND ----------
 
 import sample
+
 sample.main()

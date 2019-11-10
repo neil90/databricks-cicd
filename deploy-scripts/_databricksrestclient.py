@@ -1,9 +1,6 @@
 # Databricks notebook source
-import json, pprint, requests
-
-# Helper to pretty print json
-def pprint_j(i):
-    print(json.dumps(i, indent=4, sort_keys=True))
+import json
+import requests
 
 
 # This can easily be extended to work with other databricks API
@@ -71,18 +68,6 @@ class DatabricksRestClient:
             return results
         else:
             return {"http_status_code": raw_results.status_code}
-
-    def list_node_types(self, printJson=False):
-        return sorted(
-            map(
-                lambda x: [
-                    x["instance_type_id"],
-                    str(x["memory_mb"] / 1024) + " GB",
-                    x["num_cores"],
-                ],
-                client.get("/clusters/list-node-types")["node_types"],
-            )
-        )
 
     def get_cluster_list(self, alive=True):
         """ Returns an array of json objects for the running clusters. Grab the cluster_name or cluster_id """
