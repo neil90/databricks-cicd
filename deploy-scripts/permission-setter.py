@@ -7,7 +7,7 @@ import requests
 
 shard = os.environ["PROD_DATABRICKS_SHARD"]
 token = os.environ["PROD_DATABRICKS_TOKEN"]
-PROD_DIR_ID = 2456
+PROD_DIR_ID = 2620
 
 # Parse Yaml to get groups
 with open("./permissions.yaml") as file:
