@@ -9,7 +9,7 @@ token = os.environ["PROD_DATABRICKS_TOKEN"]
 PROD_DIR_ID = 2456
 
 # Parse Yaml to get groups
-with open("/dbfs/tmp/neil/permissions.yaml") as file:
+with open("./permissions.yaml") as file:
     permissions = yaml.load(file, Loader=yaml.FullLoader)
     
 read_prod_dir_grp = permissions['read-prod-dir']
