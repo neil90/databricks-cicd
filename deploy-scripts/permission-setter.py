@@ -73,7 +73,7 @@ for job in jobs_list['jobs']:
   if job["settings"]["name"] in job_name:
     job_id = job["job_id"]
     requests.put(f"{shard}/api/2.0/preview/permissions/jobs/{job_id}", auth=('token', token), data=json.dumps(full_jobs_acl_json))
-    print("Updated Permissions on Job " + job["settings"]["name"] +", Job ID: " + job_id)
+    print("Updated Permissions on Job " + job["settings"]["name"] +", Job ID: " + str(job_id))
 
 ############################################################################
 ############################################################################
