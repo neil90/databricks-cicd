@@ -16,6 +16,7 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install databricks-cli
+            pip install pyyaml
 
       - run:
           name: Set .databrickscfg
@@ -30,7 +31,7 @@ jobs:
           name: Copy Notebooks to "Prod"
           command: |
             . venv/bin/activate
-            databricks workspace rm -r /git-notebooks/
+            # databricks workspace rm -r /git-notebooks/
             databricks workspace import_dir -o ./git-notebooks /git-notebooks
 
       - run:
@@ -39,3 +40,8 @@ jobs:
             . venv/bin/activate
             cd ~/project/deploy-scripts
             python job-deploy.py
+
+      - run:
+          name: Update Permissions on Notebooks/Jobs
+          command: |
+            . venv/bin/activate
