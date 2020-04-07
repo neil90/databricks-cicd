@@ -4,6 +4,10 @@
 
 # COMMAND ----------
 
-import sample
+# MAGIC %python
+# MAGIC print("hi world2")
 
+# COMMAND ----------
+
+import sample
 sample.main()
