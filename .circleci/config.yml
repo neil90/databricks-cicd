@@ -45,3 +45,5 @@ jobs:
           name: Update Permissions on Notebooks/Jobs
           command: |
             . venv/bin/activate
+            cd ~/project/deploy-scripts
+            python permission-setter.py
