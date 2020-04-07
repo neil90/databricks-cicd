@@ -55,7 +55,7 @@
       }
    },
    "notebook_task":{
-      "notebook_path":"/git-notebooks/Notebook B",
+      "notebook_path":"/production/teamb/Notebook B",
       "base_parameters":{
          "param1":"value1",
          "param2":"value2"

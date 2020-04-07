@@ -19,7 +19,7 @@
     },
     "timeout_seconds":0,
     "notebook_task":{
-       "notebook_path":"/git-notebooks/Notebook A"
+       "notebook_path":"/production/Notebook A"
     },
     "max_concurrent_runs":1
  }
