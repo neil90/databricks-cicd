@@ -48,6 +48,9 @@ print("Updated Permissions on Prod Folder")
 jobs_acl_list = []
 for group in view_prod_jobs_grp:
   jobs_acl_list.append({'group_name': group, 'permission_level': 'CAN_VIEW'})
+
+# Add Default owner
+jobs_acl_list.append({'user_name': 'viren.patel+enterprise@databricks.com', 'permission_level': 'IS_OWNER'})
   
 full_jobs_acl_json = {
   "access_control_list":jobs_acl_list
