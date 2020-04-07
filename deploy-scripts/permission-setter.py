@@ -61,7 +61,7 @@ for job_json in job_jsons:
     with open(job_json) as json_file:
         job_name.append(json.load(json_file)["name"])
 
-print("Getting List of Jobs on Shard...")
+print("\nGetting List of Jobs on Shard...")
 jobs_list = requests.get(f"{shard}/api/2.0/jobs/list", auth = ('token', token)).json()
 if not jobs_list:
   print("No jobs available, exiting...")
